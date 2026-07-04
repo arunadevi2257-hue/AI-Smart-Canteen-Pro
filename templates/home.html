@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home | AI Smart Canteen</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        🍽 AI Smart Canteen
+    </div>
+
+    <ul>
+
+        <li><a href="/home">Home</a></li>
+        <li><a href="/menu">Menu</a></li>
+        <li><a href="/cart">Cart</a></li>
+        <li><a href="/orders">Orders</a></li>
+        <li><a href="/logout">Logout</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<h1>
+
+Welcome, {{ user }} 👋
+
+</h1>
+
+<p>
+
+Order delicious food with AI-powered recommendations.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="container">
+
+<h2 class="section-title">
+
+Quick Access
+
+</h2>
+
+<div class="features">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-utensils"></i>
+
+<h3>Food Menu</h3>
+
+<p>Browse all available foods.</p>
+
+<br>
+
+<a href="/menu" class="btn">
+
+Open Menu
+
+</a>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-robot"></i>
+
+<h3>AI Recommendation</h3>
+
+<p>Get personalized food suggestions.</p>
+
+<br>
+
+<a href="/recommend" class="btn">
+
+Try AI
+
+</a>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-comments"></i>
+
+<h3>AI Chatbot</h3>
+
+<p>Ask questions about food and ordering.</p>
+
+<br>
+
+<a href="/chatbot" class="btn">
+
+Open Chat
+
+</a>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<h3>Shopping Cart</h3>
+
+<p>View and manage your cart.</p>
+
+<br>
+
+<a href="/cart" class="btn">
+
+View Cart
+
+</a>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-box"></i>
+
+<h3>Order History</h3>
+
+<p>Track your previous orders.</p>
+
+<br>
+
+<a href="/orders" class="btn">
+
+View Orders
+
+</a>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+<h3>Logout</h3>
+
+<p>Sign out securely from your account.</p>
+
+<br>
+
+<a href="/logout" class="btn">
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>
+
+AI Enabled Smart Canteen Ordering System
+
+</h2>
+
+<p>
+
+AI • Flask • HTML • CSS • JavaScript • JSON Database
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

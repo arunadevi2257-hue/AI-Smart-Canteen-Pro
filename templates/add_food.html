@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Add Food</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card" style="max-width:500px;margin:auto;margin-top:80px;">
+
+<h2>Add New Food</h2>
+
+<form method="POST">
+
+<input name="name" placeholder="Food Name" required>
+
+<input name="price" placeholder="Price" required>
+
+<input name="category" placeholder="Category" required>
+
+<input name="image" placeholder="Image filename" required>
+
+<button class="btn" style="width:100%;">Add Food</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

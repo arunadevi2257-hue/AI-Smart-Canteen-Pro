@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order History | AI Smart Canteen</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+<div class="logo">🍽 AI Smart Canteen</div>
+
+<ul>
+<li><a href="/home">Home</a></li>
+<li><a href="/menu">Menu</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<h1>📦 My Orders</h1>
+<p>Track all your previous food orders.</p>
+</div>
+</section>
+
+<!-- ORDERS -->
+<div class="container">
+
+{% if orders and orders|length > 0 %}
+
+<div class="food-container">
+
+{% for order in orders %}
+
+<div class="food-card">
+
+<div style="padding:20px;">
+
+<h2>📅 {{ order.date }}</h2>
+
+<p>
+<strong>Status:</strong>
+
+{% if order.status == "Placed" %}
+<span style="color:#2563eb;">🟦 Placed</span>
+
+{% elif order.status == "Preparing" %}
+<span style="color:#f59e0b;">🟨 Preparing</span>
+
+{% elif order.status == "Ready" %}
+<span style="color:#10b981;">🟩 Ready</span>
+
+{% else %}
+<span style="color:#16a34a;">✅ Completed</span>
+{% endif %}
+
+</p>
+
+<hr>
+
+<h3>Ordered Items</h3>
+
+<ul>
+
+{% for item in order["items"] %}
+
+<li>
+{{ item.name }} × {{ item.quantity }} — ₹{{ item.price }}
+</li>
+
+{% endfor %}
+</ul>
+
+<hr>
+
+<h3>💰 Total : ₹{{ order.total }}</h3>
+
+<!-- ⭐ RATING -->
+<p style="margin-top:10px;">
+Rating:
+
+{% for i in range(1,6) %}
+
+<a href="/rate/{{ order.id }}/{{ i }}" style="text-decoration:none;font-size:20px;">
+
+{% if i <= order["rating"] %}
+
+⭐
+{% else %}
+☆
+{% endif %}
+
+</a>
+
+{% endfor %}
+
+</p>
+
+<!-- 🧾 INVOICE -->
+<a href="/invoice/{{ order.id }}" class="btn btn-small">
+🧾 Download Invoice
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="card" style="text-align:center;">
+
+<h2>📭 No Orders Yet</h2>
+
+<p>Looks like you haven't placed any orders.</p>
+
+<br>
+
+<a href="/menu">
+<button class="btn">🍔 Order Now</button>
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+<h2>AI Enabled Smart Canteen Ordering System</h2>
+
+<p>Powered by Flask • HTML • CSS • JavaScript • JSON</p>
+
+<br>
+
+<p>© 2026 All Rights Reserved.</p>
+
+</footer>
+
+</body>
+</html>

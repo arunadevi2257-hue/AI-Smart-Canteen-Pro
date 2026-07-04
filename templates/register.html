@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | AI Smart Canteen</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        🍽 AI Smart Canteen
+    </div>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
+
+</nav>
+
+<!-- ================= REGISTER ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="card" style="max-width:550px;margin:auto;">
+
+<h1 style="text-align:center;margin-bottom:15px;">
+
+📝 Create Account
+
+</h1>
+
+<p style="text-align:center;margin-bottom:30px;">
+
+Register to start ordering delicious food with AI recommendations.
+
+</p>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<div style="background:#dc2626;padding:12px;border-radius:10px;margin-bottom:20px;">
+
+{% for message in messages %}
+<p>{{ message }}</p>
+{% endfor %}
+
+</div>
+
+{% endif %}
+{% endwith %}
+
+<form method="POST">
+
+<label><strong>Full Name</strong></label>
+
+<input
+type="text"
+name="name"
+placeholder="Enter your full name"
+required
+style="width:100%;padding:14px;margin-top:8px;margin-bottom:20px;border:none;border-radius:10px;">
+
+<label><strong>Email Address</strong></label>
+
+<input
+type="email"
+name="email"
+placeholder="Enter your email"
+required
+style="width:100%;padding:14px;margin-top:8px;margin-bottom:20px;border:none;border-radius:10px;">
+
+<label><strong>Password</strong></label>
+
+<input
+type="password"
+name="password"
+placeholder="Create a password"
+required
+style="width:100%;padding:14px;margin-top:8px;margin-bottom:20px;border:none;border-radius:10px;">
+
+<label><strong>Confirm Password</strong></label>
+
+<input
+type="password"
+name="confirm_password"
+placeholder="Confirm your password"
+required
+style="width:100%;padding:14px;margin-top:8px;margin-bottom:25px;border:none;border-radius:10px;">
+
+<button type="submit" class="btn" style="width:100%;">
+
+<i class="fa-solid fa-user-plus"></i>
+
+Create Account
+
+</button>
+
+</form>
+
+<p style="margin-top:25px;text-align:center;">
+
+Already have an account?
+
+<a href="/login" style="color:#FFD54F;font-weight:bold;">
+
+Login Here
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>
+
+AI Enabled Smart Canteen Ordering System
+
+</h2>
+
+<p>
+
+Flask • HTML • CSS • JavaScript • JSON Database
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

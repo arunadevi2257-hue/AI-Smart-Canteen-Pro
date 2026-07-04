@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Aruna",
+        "email": "aruna24@gmail.com",
+        "password": "scrypt:32768:8:1$YnF9tcPn7XteW1f3$e2152c0dcd9cdc173f2c63c8db5f25b36eb23140c2a9b5c4f385017a63ee9e630ffe2481429df1e5a837f410637af20b04cf8fc1f05633b8fa60527a21cc3647",
+        "role": "user"
+    },
+    {
+        "name": "Devi",
+        "email": "devi07@gmail.com",
+        "password": "scrypt:32768:8:1$OEooS2pZ0fcniyCD$b3df4562ca331ab1613d1898d56f8d1e0dd2457efcb6d6e4e751e64ce2e5cf2ac72f35d9a0125f599e55dd8a0fe1fd07306431ab02d3e61bee6fb1bd0af9f1bb",
+        "role": "user"
+    }
+]

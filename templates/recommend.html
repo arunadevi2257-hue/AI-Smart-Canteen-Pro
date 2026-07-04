@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Food Recommendation | AI Smart Canteen</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+<div class="logo">
+
+🍽 AI Smart Canteen
+
+</div>
+
+<ul>
+
+<li><a href="/home">Home</a></li>
+<li><a href="/menu">Menu</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/orders">Orders</a></li>
+<li><a href="/logout">Logout</a></li>
+
+</ul>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<h1>
+
+🤖 AI Food Recommendation
+
+</h1>
+
+<p>
+
+Choose your food preference and let AI recommend the best dishes for you.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= FORM ================= -->
+
+<div class="container">
+
+<div class="card" style="max-width:650px;margin:auto;">
+
+<form method="POST">
+
+<label><strong>Select Preference</strong></label>
+
+<select
+name="preference"
+style="width:100%;padding:15px;border:none;border-radius:10px;margin-top:10px;margin-bottom:20px;">
+
+<option value="fast">🍔 Fast Food</option>
+
+<option value="healthy">🥗 Healthy Food</option>
+
+<option value="spicy">🌶 Spicy Food</option>
+
+<option value="south">🥘 South Indian</option>
+
+</select>
+
+<label><strong>Maximum Budget (Optional)</strong></label>
+
+<input
+type="number"
+name="max_price"
+placeholder="Enter your budget"
+style="width:100%;padding:15px;border:none;border-radius:10px;margin-top:10px;margin-bottom:25px;">
+
+<button
+type="submit"
+class="btn"
+style="width:100%;">
+
+🤖 Get AI Recommendation
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- ================= RESULT ================= -->
+
+<div class="container">
+
+{% if foods %}
+
+<h2 class="section-title">
+
+Recommended Foods
+
+</h2>
+
+<div class="food-container">
+
+{% for food in foods %}
+
+<div class="food-card">
+
+<img
+src="{{ url_for('static', filename='images/' + food.image) }}"
+alt="{{ food.name }}">
+
+<h2>{{ food.name }}</h2>
+
+<p>{{ food.category }}</p>
+
+<h3>₹{{ food.price }}</h3>
+
+<p>
+
+⭐ AI Match for Your Preference
+
+</p>
+
+<a href="/add_to_cart/{{ food.id }}">
+
+<button>
+
+🛒 Add To Cart
+
+</button>
+
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="card" style="margin-top:40px;text-align:center;">
+
+<h2>
+
+🤖 No Recommendations Yet
+
+</h2>
+
+<br>
+
+<p>
+
+Choose your preference above and click the button to get AI recommendations.
+
+</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>
+
+AI Enabled Smart Canteen Ordering System
+
+</h2>
+
+<p>
+
+Personalized AI Food Recommendation using Python & JSON
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

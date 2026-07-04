@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Veg Burger",
+        "price": 80,
+        "category": "Fast Food",
+        "image": "burger.jpeg",
+        "tags": [
+            "fast",
+            "snacks"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Pizza",
+        "price": 150,
+        "category": "Fast Food",
+        "image": "pizza.jpeg",
+        "tags": [
+            "fast",
+            "cheese"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Dosa",
+        "price": 60,
+        "category": "South Indian",
+        "image": "dosa.jpeg",
+        "tags": [
+            "healthy",
+            "south"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Fried Rice",
+        "price": 120,
+        "category": "Chinese",
+        "image": "friedrice.jpeg",
+        "tags": [
+            "spicy",
+            "rice"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "chicken_biryani",
+        "price": 150.0,
+        "category": "South Indian",
+        "image": "chicken_biryani.jpeg",
+        "rating": 4.5,
+        "tags": [
+        "south",
+        "spicy"]
+        }
+
+]

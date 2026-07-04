@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shopping Cart | AI Smart Canteen</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">🍽 AI Smart Canteen</div>
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/menu">Menu</a></li>
+        <li><a href="/orders">Orders</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>🛒 Shopping Cart</h1>
+        <p>Review your selected food items before placing your order.</p>
+    </div>
+</section>
+
+<div class="container">
+
+{% if cart and cart|length > 0 %}
+
+    <div class="food-container">
+
+    {% for item in cart %}
+
+        <div class="food-card">
+
+            <!-- IMAGE -->
+            {% if item.get('image') %}
+                <img src="{{ url_for('static', filename='images/' + item['image']) }}">
+            {% else %}
+                <img src="{{ url_for('static', filename='images/default.png') }}">
+            {% endif %}
+
+            <!-- DETAILS -->
+            <h2>{{ item.name }}</h2>
+
+            <p>Price : ₹{{ item.price }}</p>
+
+            <p>Quantity : <strong>{{ item.quantity }}</strong></p>
+
+            <h3>Subtotal : ₹{{ item.price * item.quantity }}</h3>
+
+            <!-- ACTION BUTTONS -->
+            <div style="padding:15px;">
+
+                <a href="/update_cart/{{ item.id }}/increase">
+                    <button>➕</button>
+                </a>
+
+                <a href="/update_cart/{{ item.id }}/decrease">
+                    <button>➖</button>
+                </a>
+
+                <a href="/remove_item/{{ item.id }}">
+                    <button style="background:#dc2626;">🗑 Remove</button>
+                </a>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+    </div>
+
+    <!-- TOTAL + PLACE ORDER -->
+    <div class="card" style="margin-top:40px;text-align:center;">
+
+        <h2>Grand Total : ₹{{ total }}</h2>
+
+        <form action="/place_order" method="post" style="margin-top:20px;">
+            <button class="btn" type="submit">
+                ✅ Place Order
+            </button>
+        </form>
+
+        <br>
+
+        <a href="/menu">
+            <button class="btn">🍔 Continue Shopping</button>
+        </a>
+
+    </div>
+
+{% else %}
+
+    <!-- EMPTY CART -->
+    <div class="card" style="text-align:center;">
+
+        <h2>🛒 Your Cart is Empty</h2>
+
+        <p>Add delicious food from the menu to start your order.</p>
+
+        <br>
+
+        <a href="/menu">
+            <button class="btn">Browse Menu</button>
+        </a>
+
+    </div>
+
+{% endif %}
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <h2>AI Enabled Smart Canteen Ordering System</h2>
+    <p>Fast • Smart • AI Powered Food Ordering</p>
+    <br>
+    <p>© 2026 All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

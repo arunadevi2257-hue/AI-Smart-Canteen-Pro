@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body style="padding-top:100px;">
+
+<!-- NAVBAR -->
+<nav>
+<div class="logo">👨‍💼 Admin Panel</div>
+
+<ul>
+<li><a href="/admin/add_food">Add Food</a></li>
+<li><a href="/admin/dashboard">Dashboard</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+</nav>
+
+<!-- DASHBOARD -->
+<div class="container">
+
+<h1 class="section-title">📊 Admin Dashboard</h1>
+
+<div class="features">
+
+<div class="feature-card">
+<h2>👥 Users</h2>
+<p>{{ users }}</p>
+</div>
+
+<div class="feature-card">
+<h2>🍔 Foods</h2>
+<p>{{ foods }}</p>
+</div>
+
+<div class="feature-card">
+<h2>📦 Orders</h2>
+<p>{{ orders|length }}</p>
+</div>
+
+<div class="feature-card">
+<h2>💰 Sales</h2>
+<p>₹{{ sales }}</p>
+</div>
+
+<div class="feature-card">
+<h2>📊 Avg Order</h2>
+<p>₹{{ avg_order }}</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- ORDERS -->
+<div class="container">
+
+<h2 class="section-title">📦 All Orders</h2>
+
+{% if orders and orders|length > 0 %}
+
+{% for order in orders %}
+
+<div class="order-card">
+
+    <h3>Order ID: {{ order.id }}</h3>
+
+    <p><b>Customer:</b> {{ order.customer }}</p>
+
+    <p><b>Total:</b> ₹{{ order.total }}</p>
+
+    <!-- STATUS -->
+    <p><b>Status:</b>
+        {% if order.status == "Preparing" %}
+            <span style="color:orange;">🟡 Preparing</span>
+
+        {% elif order.status == "Ready" %}
+            <span style="color:green;">🟢 Ready</span>
+
+        {% elif order.status == "Completed" %}
+            <span style="color:blue;">✅ Completed</span>
+
+        {% else %}
+            <span style="color:red;">🔴 Placed</span>
+        {% endif %}
+    </p>
+
+    <!-- STATUS BUTTONS -->
+    <div style="margin-top:10px;">
+
+        <a href="/admin/update_order/{{ order.id }}/Preparing">🟡 Preparing</a>
+        <a href="/admin/update_order/{{ order.id }}/Ready">🟢 Ready</a>
+        <a href="/admin/update_order/{{ order.id }}/Completed">✅ Completed</a>
+
+    </div>
+
+    <!-- RATING -->
+    <p style="margin-top:10px;">
+        Rating:
+        {% if order.rating == 0 %}
+            <span style="color:red;font-weight:bold;">Not Rated</span>
+        {% else %}
+            <span style="color:gold;font-weight:bold;">
+                ⭐ {{ order.rating }}
+            </span>
+        {% endif %}
+    </p>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="card" style="text-align:center;">
+    <h3>No Orders Found</h3>
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

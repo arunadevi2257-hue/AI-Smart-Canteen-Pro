@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Enabled Smart Canteen Ordering System</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        🍽 AI Smart Canteen
+    </div>
+
+    <ul>
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/login">Login</a></li>
+
+        <li><a href="/register">Register</a></li>
+        
+        <a href="/logout" class="btn">
+        Logout
+    </a>
+
+    </ul>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<h1 class="float">
+
+AI Enabled Smart Canteen
+
+</h1>
+
+<p>
+
+Order your favourite food smarter with AI recommendations,
+instant ordering and a beautiful user experience.
+
+</p>
+
+<a href="/register" class="btn">
+
+Get Started
+
+</a>
+
+<a href="/login" class="btn">
+
+Login
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="container">
+
+<h2 class="section-title">
+
+Why Choose Us?
+
+</h2>
+
+<div class="features">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-robot"></i>
+
+<h3>AI Recommendation</h3>
+
+<p>
+
+Smart food suggestions based on your preferences.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<h3>Easy Ordering</h3>
+
+<p>
+
+Order food within seconds using a modern interface.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-bolt"></i>
+
+<h3>Fast Service</h3>
+
+<p>
+
+Quick canteen ordering with instant confirmation.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h3>Admin Dashboard</h3>
+
+<p>
+
+Manage orders, sales and food items easily.
+
+</p>
+
+<a href="/admin/login" class="btn"></a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= POPULAR FOODS ================= -->
+
+<section class="container">
+
+<h2 class="section-title">
+
+Popular Foods
+
+</h2>
+
+<div class="food-container">
+
+<div class="food-card">
+
+<img src="{{ url_for('static', filename='images/burger.jpg') }}">
+
+<h2>Veg Burger</h2>
+
+<p>Fast Food</p>
+
+<h3>₹80</h3>
+
+</div>
+
+<div class="food-card">
+
+<img src="{{ url_for('static', filename='images/pizza.jpg') }}">
+
+<h2>Pizza</h2>
+
+<p>Italian</p>
+
+<h3>₹150</h3>
+
+</div>
+
+<div class="food-card">
+
+<img src="{{ url_for('static', filename='images/dosa.jpg') }}">
+
+<h2>Dosa</h2>
+
+<p>South Indian</p>
+
+<h3>₹60</h3>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>
+
+AI Enabled Smart Canteen Ordering System
+
+</h2>
+
+<p>
+
+Developed using Flask, HTML, CSS, JavaScript and JSON Database.
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

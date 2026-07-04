@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Chatbot | AI Smart Canteen</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+<div class="logo">
+🍽 AI Smart Canteen
+</div>
+
+<ul>
+
+<li><a href="/home">Home</a></li>
+<li><a href="/menu">Menu</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/orders">Orders</a></li>
+<li><a href="/logout">Logout</a></li>
+
+</ul>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<h1>🤖 AI Smart Chatbot</h1>
+
+<p>
+
+Ask anything about food, menu, prices and ordering.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= CHAT ================= -->
+
+<div class="container">
+
+<div class="card" style="max-width:800px;margin:auto;">
+
+<h2 style="text-align:center;margin-bottom:20px;">
+
+💬 Chat With AI
+
+</h2>
+
+<form method="POST">
+
+<input
+type="text"
+name="message"
+placeholder="Type your question here..."
+required
+style="width:100%;padding:15px;border-radius:10px;border:none;margin-bottom:20px;font-size:16px;">
+
+<button
+class="btn"
+type="submit">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Send
+
+</button>
+
+</form>
+
+{% if response %}
+
+<div style="margin-top:30px;">
+
+<div style="background:#2563eb;color:white;padding:15px;border-radius:15px;margin-bottom:15px;">
+
+<strong>🤖 AI Assistant</strong>
+
+<hr style="margin:10px 0;">
+
+<p>
+
+{{ response }}
+
+</p>
+
+</div>
+
+</div>
+
+{% endif %}
+
+<div style="margin-top:30px;">
+
+<h3>💡 Try asking:</h3>
+
+<ul style="margin-top:15px;line-height:2;">
+
+<li>Hello</li>
+
+<li>Show menu</li>
+
+<li>Healthy food</li>
+
+<li>Spicy food</li>
+
+<li>Price of Pizza</li>
+
+<li>How to order?</li>
+
+<li>Today's menu</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>
+
+AI Enabled Smart Canteen Ordering System
+
+</h2>
+
+<p>
+
+AI Chatbot • Smart Recommendation • Fast Ordering
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

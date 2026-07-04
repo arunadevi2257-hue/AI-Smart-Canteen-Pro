@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Menu | AI Smart Canteen</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        🍽 AI Smart Canteen
+    </div>
+
+    <ul>
+
+        <li><a href="/home">Home</a></li>
+        <li><a href="/cart">Cart</a></li>
+        <li><a href="/orders">Orders</a></li>
+        <li><a href="/logout">Logout</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<h1>🍔 Food Menu</h1>
+
+<p>
+Choose your favourite food and add it to your cart.
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchFood"
+placeholder="🔍 Search food..."
+onkeyup="searchFood()">
+
+</div>
+
+<!-- ================= FOOD LIST ================= -->
+
+<div class="container">
+
+<div class="food-container">
+
+{% for food in foods %}
+
+<div class="food-card">
+
+<img src="{{ url_for('static', filename='images/' + food.image) }}"
+     alt="{{ food.name }}">
+
+<h2>{{ food.name }}</h2>
+
+<p>{{ food.category }}</p>
+
+<h3>₹{{ food.price }}</h3>
+
+<p>
+⭐ 4.8 &nbsp; | &nbsp; Fresh & Delicious
+</p>
+
+<a href="/add_to_cart/{{ food.id }}">
+
+<button>
+
+🛒 Add To Cart
+
+</button>
+
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>
+
+AI Enabled Smart Canteen Ordering System
+
+</h2>
+
+<p>
+
+Enjoy delicious food with AI-powered recommendations.
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | AI Smart Canteen</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+🍽 AI Smart Canteen
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+<li><a href="/register">Register</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="container">
+
+<div class="card" style="max-width:500px;margin:auto;">
+
+<h1 style="text-align:center;margin-bottom:20px;">
+
+🔐 Login
+
+</h1>
+
+<p style="text-align:center;margin-bottom:30px;">
+
+Login to continue ordering delicious food.
+
+</p>
+
+{% with messages = get_flashed_messages() %}
+
+{% if messages %}
+
+<div style="background:#dc2626;padding:12px;border-radius:10px;margin-bottom:20px;">
+
+{% for message in messages %}
+
+<p>{{ message }}</p>
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+
+{% endwith %}
+
+<form method="POST">
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+placeholder="Enter your email"
+required
+style="width:100%;padding:14px;margin-top:8px;margin-bottom:20px;border:none;border-radius:10px;">
+
+<label>Password</label>
+
+<input
+type="password"
+name="password"
+placeholder="Enter your password"
+required
+style="width:100%;padding:14px;margin-top:8px;margin-bottom:25px;border:none;border-radius:10px;">
+
+<button type="submit" class="btn" style="width:100%;">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+Login
+
+</button>
+
+</form>
+
+<p style="margin-top:25px;text-align:center;">
+
+Don't have an account?
+
+<a href="/register" style="color:#FFD54F;">
+
+Register Here
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>
+
+AI Enabled Smart Canteen Ordering System
+
+</h2>
+
+<p>
+
+Secure Login • Fast Ordering • AI Powered
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+
+</html>
