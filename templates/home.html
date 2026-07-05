@@ -216,7 +216,7 @@ AI • Flask • HTML • CSS • JavaScript • JSON Database
 
 <script>
 
-    const USER_ID = {{ session["user_id"] }};
+    const USER_ID = Number("{{ session.get('user_id', 0) }}");
 
     let count = 0;
 
