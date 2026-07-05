@@ -3,7 +3,14 @@
 // <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 
 (function () {
-  const socket = io();
+  // Guard: if Socket.IO client script didn't load, don't crash the whole
+  // script — still show the bell icon so the UI isn't silently missing.
+  let socket = null;
+  if (typeof io === 'function') {
+    socket = io();
+  } else {
+    console.warn('[notify.js] Socket.IO client not found - real-time updates disabled, bell icon still shown.');
+  }
 
   // ---- State ----
   let unreadCount = 0;
@@ -111,13 +118,15 @@
   }
 
   // ---- Socket events ----
-  socket.on('connect', () => {
-    console.log('[notify.js] connected:', socket.id);
-  });
+  if (socket) {
+    socket.on('connect', () => {
+      console.log('[notify.js] connected:', socket.id);
+    });
 
-  // Customer: order status updates, Admin: new order alerts
-  // Both come through the same event; server routes to the correct room.
-  socket.on('new_notification', handleNotification);
+    // Customer: order status updates, Admin: new order alerts
+    // Both come through the same event; server routes to the correct room.
+    socket.on('new_notification', handleNotification);
+  }
 
   // ---- Init ----
   document.addEventListener('DOMContentLoaded', () => {
