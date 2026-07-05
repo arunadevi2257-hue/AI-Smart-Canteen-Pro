@@ -11,7 +11,16 @@ from flask_socketio import SocketIO
 app = Flask(__name__)
 app.secret_key = "smartcanteen_secret_key"
 
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
+socketio = SocketIO(app, async_mode='eventlet')
+
+from flask_socketio import join_room
+
+@socketio.on('connect')
+def handle_connect():
+    if session.get("admin"):
+        join_room("admin_dashboard")
+    elif session.get("user_id"):
+        join_room(f'user_{session["user_id"]}')
 
 # ================= FOOD =================
 def load_foods():
@@ -244,6 +253,12 @@ def place_order():
 })
 
     save_orders(orders)
+    
+    socketio.emit('new_notification', {
+       'message': f"New order #{orders[-1]['id']} received",
+       'type': 'new_order'
+    },   room='admin_dashboard')
+
 
     session["cart"] = []
 
@@ -462,10 +477,10 @@ def order_ready(order_id):
 
             order["status"] = "Ready"
 
-            socketio.emit("order_ready", {
-              "user_id": order["user_id"],
-               "message": f"Your Order #{order_id} is Ready!"
-            })
+            socketio.emit('new_notification', {
+                  'message': f"Order #{order['id']} is now Ready",
+                  'type': 'order_status'
+                }, room=f"user_{order['user_id']}")
 
             found = True
             break
