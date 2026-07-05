@@ -11,7 +11,7 @@ from flask_socketio import SocketIO
 app = Flask(__name__)
 app.secret_key = "smartcanteen_secret_key"
 
-socketio = SocketIO(app, async_mode='eventlet')
+socketio = SocketIO(app, async_mode='threading')
 
 from flask_socketio import join_room
 
