@@ -90,6 +90,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <h3>💰 Total : ₹{{ order.total }}</h3>
 
+
+{% if order.get('discount', 0) > 0 %}
+<p><strong>🎟 Coupon:</strong> {{ order.coupon }}</p>
+<p><strong>💸 Discount:</strong> ₹{{ order.discount }}</p>
+{% endif %}
+
 <hr>
 
 <p><strong>💳 Payment Method:</strong>
@@ -106,6 +112,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <!-- ⭐ RATING -->
 <p style="margin-top:10px;">
+
+<hr>
+
 Rating:
 
 {% for i in range(1,6) %}

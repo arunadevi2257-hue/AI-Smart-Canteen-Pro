@@ -74,6 +74,16 @@ href="{{ url_for('static', filename='css/style.css') }}">
 
     <p><b>Total:</b> ₹{{ order.total }}</p>
 
+    <p><b>🎟 Coupon:</b> {{ order.get('coupon', 'No Coupon') }}</p>
+
+    <p><b>💸 Discount:</b> ₹{{ order.get('discount', 0) }}</p>
+
+    <p><b>💳 Payment:</b> {{ order.get('payment_method', 'Cash on Delivery') }}</p>
+
+    <p><b>✅ Payment Status:</b> {{ order.get('payment_status', 'Paid') }}</p>
+
+    <p><b>🆔 Payment ID:</b> {{ order.get('payment_id', 'N/A') }}</p>
+
     <!-- STATUS -->
     <p><b>Status:</b>
         {% if order.status == "Preparing" %}

@@ -193,6 +193,15 @@ def place_order():
 
     total = sum(item["price"] * item["quantity"] for item in cart)
 
+    coupon = request.form.get("coupon", "").strip().upper().replace("","")
+
+    discount = 0
+
+    if coupon == "SAVE10":
+       discount = total * 0.10
+
+    final_total = total - discount
+
     payment_method = request.form.get("payment_method", "Cash on Delivery")
     payment_status = request.form.get("payment_status", "Paid")
     payment_id = "PAY" + datetime.now().strftime("%Y%m%d%H%M%S")
@@ -201,8 +210,10 @@ def place_order():
     "id": len(orders) + 1,
     "customer": session["user"],
     "items": cart,
-    "total": total,
-    "status": "Placed",
+    "total": final_total,
+    "discount": discount,
+    "coupon": coupon,
+    "status":"Placed",
     "payment_status": payment_status,
     "payment_method": payment_method,
     "payment_id": payment_id,

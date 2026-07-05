@@ -212,5 +212,71 @@
         "payment_id": "PAY20260705095808",
         "rating": 0,
         "date": "05-07-2026 09:58"
+    },
+    {
+        "id": 13,
+        "customer": "Devi",
+        "items": [
+            {
+                "id": 1,
+                "image": "burger.jpeg",
+                "name": "Veg Burger",
+                "price": 80,
+                "quantity": 1
+            }
+        ],
+        "total": 80,
+        "discount": 0,
+        "coupon": "SAVE 10",
+        "status": "Placed",
+        "payment_status": "Paid",
+        "payment_method": "UPI",
+        "payment_id": "PAY20260705101620",
+        "rating": 0,
+        "date": "05-07-2026 10:16"
+    },
+    {
+        "id": 14,
+        "customer": "Devi",
+        "items": [
+            {
+                "id": 3,
+                "image": "dosa.jpeg",
+                "name": "Dosa",
+                "price": 60,
+                "quantity": 1
+            }
+        ],
+        "total": 60,
+        "discount": 0,
+        "coupon": "SAVE 10",
+        "status": "Placed",
+        "payment_status": "Paid",
+        "payment_method": "UPI",
+        "payment_id": "PAY20260705101703",
+        "rating": 0,
+        "date": "05-07-2026 10:17"
+    },
+    {
+        "id": 15,
+        "customer": "Devi",
+        "items": [
+            {
+                "id": 5,
+                "image": "chicken_biryani.jpeg",
+                "name": "chicken_biryani",
+                "price": 150.0,
+                "quantity": 1
+            }
+        ],
+        "total": 135.0,
+        "discount": 15.0,
+        "coupon": "SAVE10",
+        "status": "Placed",
+        "payment_status": "Paid",
+        "payment_method": "Cash on Delivery",
+        "payment_id": "PAY20260705103816",
+        "rating": 0,
+        "date": "05-07-2026 10:38"
     }
 ]

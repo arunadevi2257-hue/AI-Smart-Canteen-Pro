@@ -22,7 +22,15 @@
         <h3>Total Amount : ₹{{ total }}</h3>
 
         <form action="/place_order" method="post">
-
+            
+            <label><strong>🎟 Coupon Code</strong></label><br>
+            <input type="text" 
+           name="coupon"
+           placeholder="Enter Coupon Code"
+           style="width:100%;padding:10px;margin-top:8px;margin-bottom:15px;">
+           <p style="color:green;">
+            Available Coupon: <strong>SAVE10</strong> (10% OFF)
+        </p>
             <p><strong>Select Payment Method</strong></p>
 
             <label>
