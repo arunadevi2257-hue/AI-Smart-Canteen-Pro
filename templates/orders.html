@@ -90,6 +90,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 <h3>💰 Total : ₹{{ order.total }}</h3>
 
+<hr>
+
+<p><strong>💳 Payment Method:</strong>
+{{ order.get('payment_method', 'Cash on Delivery') }}
+</p>
+
+<p><strong>✅ Payment Status:</strong>
+{{ order.get('payment_status', 'Paid') }}
+</p>
+
+<p><strong>🆔 Payment ID:</strong>
+{{ order.get('payment_id', 'N/A') }}
+</p>
+
 <!-- ⭐ RATING -->
 <p style="margin-top:10px;">
 Rating:

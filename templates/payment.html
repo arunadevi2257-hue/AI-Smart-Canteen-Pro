@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | AI Smart Canteen</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+    <div class="logo">🍽 AI Smart Canteen</div>
+</nav>
+
+<div class="container" style="margin-top:40px; max-width:600px;">
+
+    <div class="card">
+
+        <h2 style="text-align:center;">💳 Payment</h2>
+
+        <h3>Total Amount : ₹{{ total }}</h3>
+
+        <form action="/place_order" method="post">
+
+            <p><strong>Select Payment Method</strong></p>
+
+            <label>
+                <input type="radio" name="payment_method" value="Cash on Delivery" checked>
+                Cash on Delivery
+            </label>
+
+            <br><br>
+
+            <label>
+                <input type="radio" name="payment_method" value="UPI">
+                UPI
+            </label>
+
+            <br><br>
+
+            <label>
+                <input type="radio" name="payment_method" value="Card">
+                Debit / Credit Card
+            </label>
+
+            <input type="hidden" name="payment_status" value="Paid">
+
+            <br><br>
+
+            <button class="btn" type="submit">
+                ✅ Pay Now
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

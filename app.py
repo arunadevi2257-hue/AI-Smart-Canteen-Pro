@@ -193,15 +193,22 @@ def place_order():
 
     total = sum(item["price"] * item["quantity"] for item in cart)
 
+    payment_method = request.form.get("payment_method", "Cash on Delivery")
+    payment_status = request.form.get("payment_status", "Paid")
+    payment_id = "PAY" + datetime.now().strftime("%Y%m%d%H%M%S")
+
     orders.append({
-        "id": len(orders) + 1,
-        "customer": session["user"],
-        "items": cart,
-        "total": total,
-        "status": "Placed",
-        "rating": 0,
-        "date": datetime.now().strftime("%d-%m-%Y %H:%M")
-    })
+    "id": len(orders) + 1,
+    "customer": session["user"],
+    "items": cart,
+    "total": total,
+    "status": "Placed",
+    "payment_status": payment_status,
+    "payment_method": payment_method,
+    "payment_id": payment_id,
+    "rating": 0,
+    "date": datetime.now().strftime("%d-%m-%Y %H:%M")
+})
 
     save_orders(orders)
 
@@ -357,7 +364,22 @@ def recommend():
         foods=recommended
     )
 
-    
+@app.route("/payment")
+def payment():
+
+    if "user" not in session:
+        return redirect("/login")
+
+    cart = session.get("cart", [])
+
+    if not cart:
+        return redirect("/cart")
+
+    total = sum(item["price"] * item["quantity"] for item in cart)
+
+    return render_template("payment.html", total=total)
+
+
 # ================= ORDER RATING =================
 @app.route("/rate/<int:order_id>/<int:rating>")
 def rate_order(order_id, rating):

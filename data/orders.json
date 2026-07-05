@@ -192,5 +192,25 @@
         "status": "Placed",
         "rating": 2,
         "date": "04-07-2026 23:37"
+    },
+    {
+        "id": 12,
+        "customer": "Devi",
+        "items": [
+            {
+                "id": 1,
+                "image": "burger.jpeg",
+                "name": "Veg Burger",
+                "price": 80,
+                "quantity": 1
+            }
+        ],
+        "total": 80,
+        "status": "Placed",
+        "payment_status": "Paid",
+        "payment_method": "Cash on Delivery",
+        "payment_id": "PAY20260705095808",
+        "rating": 0,
+        "date": "05-07-2026 09:58"
     }
 ]
