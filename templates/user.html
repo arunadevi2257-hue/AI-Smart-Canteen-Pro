@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        nav {
+            background: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .bell {
+            float: right;
+            margin-right: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #count {
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+        }
+
+        #notifications {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .box {
+            background: #f5f5f5;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-left: 5px solid green;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    🍽️ User Dashboard
+
+    <div class="bell">
+        🔔
+        <span id="count">0</span>
+    </div>
+</nav>
+
+<h2>My Orders</h2>
+
+<div id="notifications"></div>
+
+<!-- SOCKET.IO CDN MUST BE FIRST -->
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+<script>
+
+const USER_ID = "{{ session['user_id'] }}";   // must match backend user id
+let count = 0;
+
+// CONNECT SOCKET
+var socket = io(location.protocol + "//" + document.domain + ":" + location.port);
+
+socket.on("connect", function () {
+    console.log("Socket Connected");
+});
+
+socket.on("order_ready", function(data) {
+
+    // check correct user
+    if (data.user_id == USER_ID) {
+
+        // increase bell count
+        count++;
+        document.getElementById("count").innerText = count;
+
+        // show notification box
+        let div = document.createElement("div");
+        div.className = "box";
+        div.innerHTML = "🍽️ " + data.message;
+
+        document.getElementById("notifications").appendChild(div);
+
+        // popup alert
+        alert(data.message);
+    }
+});
+
+</script>
+
+</body>
+</html>

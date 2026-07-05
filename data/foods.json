@@ -53,7 +53,7 @@
         "tags": [
         "south",
         "spicy"]
-        }
+        },
 
     { 
         "id": 6,
@@ -64,6 +64,6 @@
         "rating": 4.5,
         "tags": [
         "smoothy"]
-        }
+    }
 
 ]

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Order Ready</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .ready-box {
+            text-align: center;
+            margin-top: 120px;
+            padding: 30px;
+        }
+
+        .ready-text {
+            font-size: 40px;
+            font-weight: 900;
+            color: green;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .sub-text {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">👨‍💼 Admin Panel</div>
+
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/menu">Menu</a></li>
+        <li><a href="/orders">My Orders</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- READY MESSAGE -->
+<div class="ready-box">
+
+    <div class="ready-text">
+        🍽️ YOUR ORDER IS READY!
+    </div>
+
+    <div class="sub-text">
+        Please collect your food from counter 🙌
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -210,6 +210,38 @@ AI • Flask • HTML • CSS • JavaScript • JSON Database
 
 </footer>
 
+<!-- ================= SOCKET.IO ================= -->
+
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+<script>
+
+    const USER_ID = {{ session["user_id"] }};
+
+    let count = 0;
+
+    const socket = io();
+
+    socket.on("connect", function () {
+    console.log("✅ Socket Connected");
+});
+
+socket.on("order_ready", function(data){
+
+    console.log(data);
+
+    if(data.user_id == USER_ID){
+
+        count++;
+
+        alert(data.message);
+
+    }
+
+});
+
+</script>
+
 </body>
 
 </html>

@@ -6,10 +6,12 @@ from datetime import datetime
 from utils.jsondb import load_users, save_users, load_orders, save_orders
 from utils.chatbot import get_bot_response
 from utils.recommendation import recommend_foods
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
 app.secret_key = "smartcanteen_secret_key"
 
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
 # ================= FOOD =================
 def load_foods():
@@ -41,6 +43,7 @@ def register():
                 return redirect("/register")
 
         users.append({
+            "id": len(users) + 1,
             "name": request.form["name"],
             "email": request.form["email"],
             "password": generate_password_hash(request.form["password"]),
@@ -52,24 +55,42 @@ def register():
 
     return render_template("register.html")
 
-
 # ================= LOGIN =================
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
     if request.method == "POST":
         users = load_users()
+        print("Users loaded:", users)
+        print("Total users:", len(users))
+
+        email = request.form["email"].strip()
+        password = request.form["password"]
+
+        print("Login Email:", email)
 
         for u in users:
-            if u["email"] == request.form["email"] and check_password_hash(u["password"], request.form["password"]):
-                session["user"] = u["name"]
-                session["cart"] = []
-                return redirect("/home")
+            print("Checking:", u)
+
+            if u["email"].strip().lower() == email.lower():
+
+                print("Email Matched")
+
+                if check_password_hash(u["password"], password):
+
+                    print("Password Matched")
+
+                    session["user"] = u["name"]
+                    session["user_id"] = u["id"]
+                    session["cart"] = []
+
+                    return redirect("/home")
+                else:
+                    print("Password Wrong")
 
         flash("Invalid credentials")
 
     return render_template("login.html")
-
 
 # ================= LOGOUT =================
 @app.route("/logout")
@@ -209,6 +230,7 @@ def place_order():
     orders.append({
     "id": len(orders) + 1,
     "customer": session["user"],
+    "user_id": session["user_id"],
     "items": cart,
     "total": final_total,
     "discount": discount,
@@ -428,6 +450,41 @@ def invoice(id):
 
     return render_template("invoice.html", order=order)
 
+@app.route('/admin/order_ready/<int:order_id>')
+def order_ready(order_id):
+
+    orders = load_orders()
+
+    found = False
+
+    for order in orders:
+        if order["id"] == order_id:
+
+            order["status"] = "Ready"
+
+            socketio.emit("order_ready", {
+              "user_id": order["user_id"],
+               "message": f"Your Order #{order_id} is Ready!"
+            })
+
+            found = True
+            break
+
+    if found:
+        save_orders(orders)
+        return redirect("/admin/dashboard")
+    else:
+        return "Order not found"
+
+
+@app.route("/order_ready_page")
+def order_ready_page():
+    return render_template("order_ready.html")    
+
+@app.route("/test")
+def test():
+    return "OK"
+
 # ================= RUN =================
 if __name__ == "__main__":
-    app.run(debug=True)
+    socketio.run(app, debug=True, allow_unsafe_werkzeug=True)

@@ -104,9 +104,10 @@ href="{{ url_for('static', filename='css/style.css') }}">
     <div style="margin-top:10px;">
 
         <a href="/admin/update_order/{{ order.id }}/Preparing">🟡 Preparing</a>
-        <a href="/admin/update_order/{{ order.id }}/Ready">🟢 Ready</a>
+        <a href="/admin/order_ready/{{ order.id }}">
+            🟢 Ready 
+        </a>
         <a href="/admin/update_order/{{ order.id }}/Completed">✅ Completed</a>
-
     </div>
 
     <!-- RATING -->
